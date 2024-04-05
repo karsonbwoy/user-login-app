@@ -1,15 +1,23 @@
-import './App.css';
-import { Box, Stack, Typography, Button } from '@mui/material'
+import './App.css'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import NoPage from './pages/NoPage'
+import Layout from './pages/Layout'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
 
-export default function App(params) {
-  return (<div class='App'>
-    <Box width='500px'>
-      <Stack >
-        <Typography variant='h5'>Welcome buddy!</Typography>
-        <Button>Login</Button>
-        <Button>Register</Button>
-      </Stack>
-    </Box>
+export default function App() {
+  return (<div className='App'>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </div>
   )
 }
