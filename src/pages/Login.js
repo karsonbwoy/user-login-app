@@ -2,7 +2,6 @@ import { Link } from "react-router-dom"
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -28,17 +27,17 @@ export default function Login() {
             }}
             noValidate
             autoComplete="off">
-            <FormControl variant="standard">
-                <InputLabel htmlFor="input-with-icon-adornment">
-                    Login
-                </InputLabel>
-                <Input
-                    id="input-with-icon-adornment"
+            <FormControl variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-login">Login</InputLabel>
+                <OutlinedInput
+                    id="outlined-adornment-login"
+                    type='text'
                     startAdornment={
                         <InputAdornment position="start">
                             <AccountCircle />
                         </InputAdornment>
                     }
+                    label="Login"
                 />
             </FormControl>
             <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
