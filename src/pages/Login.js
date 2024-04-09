@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Button, Stack } from "@mui/material";
+import { Button} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -10,13 +10,23 @@ import FormControl from '@mui/material/FormControl';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import { useState } from "react";
 
 
 export default function Login() {
 
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [password, setPassword]  = useState('')
+    const [login, setLogin] = useState('')
 
+    
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleChange = (value, func) => func(value);
+    const handleSubmit = (e,psswrd, lgn) => {
+        e.preventDefault();
+        const userData = {password: psswrd, login: lgn}
+        console.log('User: ' + userData.login + ' logged with password: ' + userData.password)
+    }
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
@@ -39,6 +49,8 @@ export default function Login() {
                         </InputAdornment>
                     }
                     label="Login"
+                    value = {login}
+                    onChange={(e) => handleChange(e.target.value, setLogin)}
                 />
             </FormControl>
             <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
@@ -59,9 +71,11 @@ export default function Login() {
                         </InputAdornment>
                     }
                     label="Password"
+                    value = {password}
+                    onChange={(e) => handleChange(e.target.value, setPassword)}
                 />
             </FormControl>
-            <Button variant='contained' size='large' >Login</Button>
+            <Button type='submit' variant='contained' size='large' onClick ={(e) => handleSubmit(e,password, login)} >Login</Button>
             <Link to='/register'>
                 <p>No account? Register then.</p>
             </Link>
