@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import { Button, Stack } from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -60,6 +61,7 @@ export default function Login() {
                     label="Password"
                 />
             </FormControl>
+            <Button variant='contained' size='large' >Login</Button>
             <Link to='/register'>
                 <p>No account? Register then.</p>
             </Link>
